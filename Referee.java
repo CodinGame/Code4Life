@@ -444,7 +444,7 @@ class Referee extends MultiReferee {
 		samplePool.get(1).add(new Sample(new int[] { 3, 0, 2, 3, 0 }, 10, MoleculeType.C));
 		samplePool.get(1).add(new Sample(new int[] { 4, 2, 0, 0, 1 }, 20, MoleculeType.C));
 		samplePool.get(1).add(new Sample(new int[] { 0, 5, 3, 0, 0 }, 20, MoleculeType.C));
-		samplePool.get(1).add(new Sample(new int[] { 0, 0, 0, 0, 5 }, 20, MoleculeType.D));
+		samplePool.get(1).add(new Sample(new int[] { 5, 0, 0, 0, 0 }, 20, MoleculeType.D));
 		samplePool.get(1).add(new Sample(new int[] { 0, 0, 0, 6, 0 }, 30, MoleculeType.D));
 		samplePool.get(1).add(new Sample(new int[] { 2, 0, 0, 2, 3 }, 10, MoleculeType.D));
 		samplePool.get(1).add(new Sample(new int[] { 1, 4, 2, 0, 0 }, 20, MoleculeType.D));
