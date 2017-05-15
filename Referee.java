@@ -1081,7 +1081,7 @@ class Referee extends MultiReferee {
 
 	@Override
 	protected boolean gameOver() {
-		if (LEAGUE_LEVEL < 3) {
+		if (LEAGUE_LEVEL >= 3) {
 		    return super.gameOver();
 		} else {
 		    return super.gameOver() || players.stream().anyMatch(p -> p.score >= MAX_SCORE);    
