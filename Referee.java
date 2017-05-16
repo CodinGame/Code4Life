@@ -1,6 +1,5 @@
 class Referee extends MultiReferee {
-
-	public static int LEAGUE_LEVEL = 0; // 0, 1 or 2. 3 is for silver+.
+	public static int LEAGUE_LEVEL = 3; // 0, 1 or 2. 3 is for silver+.
 
 	public static final int EV_NEW_SAMPLE = 0;
 	public static final int EV_TAKE_SAMPLE = 1;
@@ -300,7 +299,7 @@ class Referee extends MultiReferee {
 	static final Pattern PLAYER_MOVE_PATTERN = Pattern.compile("^GOTO\\s+(?<module>LABORATORY|DIAGNOSIS|MOLECULES|SAMPLES)(?:\\s+)?(?:\\s+(?<message>.+))?", Pattern.CASE_INSENSITIVE);
 	static final Pattern PLAYER_WAIT_PATTERN = Pattern.compile("^WAIT(?:\\s+)?(?:\\s+(?<message>.+))?", Pattern.CASE_INSENSITIVE);
 	static final Pattern PLAYER_USE_PATTERN = Pattern.compile("^CONNECT(?:\\s+(?<data>[ABCDE]|(?:-?\\d+)))?(?:\\s+)?(?:\\s+(?<message>.+))?$", Pattern.CASE_INSENSITIVE);
-	static final String[] EXPECTED_BY_LEAGUE_LEVEL = { "GOTO LABORATORY|DIAGNOSIS|MOLECULES | CONNECT data", "GOTO LABORATORY|DIAGNOSIS|MOLECULES|SAMPLES | CONNECT data", "GOTO LABORATORY|DIAGNOSIS|MOLECULES|SAMPLES | CONNECT data" };
+	static final String[] EXPECTED_BY_LEAGUE_LEVEL = { "GOTO LABORATORY|DIAGNOSIS|MOLECULES | CONNECT data", "GOTO LABORATORY|DIAGNOSIS|MOLECULES|SAMPLES | CONNECT data", "GOTO LABORATORY|DIAGNOSIS|MOLECULES|SAMPLES | CONNECT data", "GOTO LABORATORY|DIAGNOSIS|MOLECULES|SAMPLES | CONNECT data" };
 
 	private List<PlayerData> players;
 	private List<Transfer> transfers;
@@ -872,7 +871,7 @@ class Referee extends MultiReferee {
 		p.put("cannotAffordSample", "Invalid CONNECT: you do not have enough molecules/expertise to launch research on sample %d");
 		p.put("connectToNothing", "Invalid CONNECT: you must go to a module before using the connect command");
 		p.put("InvalidConnect", "Invalid CONNECT");
-		p.put("ProjectTooltip", "$0 completes a science project!");
+		p.put("ProjectTooltip", "$%d completes a science project!");
 		p.put("production", "$%d researched medicine for sample %d, scored %d health points and gained expertise in molecule %s");
 		p.put("productionNoGain", "$%d researched medicine for sample %d, scored %d health points");
 		p.put("upload", "$%d stores sample %d on the cloud.");
