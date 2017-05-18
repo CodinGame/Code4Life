@@ -706,11 +706,14 @@ class Referee extends MultiReferee {
 		Optional<Sample> target = player.tray.stream().filter(sample -> data.equals(sample.id)).findFirst();
 		if (target.isPresent()) {
 			Sample sample = target.get();
-			if (canAfford(player, sample.cost)) {
+			if (!canAfford(player, sample.cost) {
+				throw new LostException("cannotAffordSample", data);
+			} else if (!sample.isDiscovered()) {
+				throw new LostException("sampleNotDiagnosed", data);
+			} else {
 				transfers.add(new ProductionTransfer(player, sample));
 				return;
 			}
-			throw new LostException("cannotAffordSample", data);
 		}
 		throw new LostException("sampleNotInTray", data);
 	}
@@ -869,6 +872,7 @@ class Referee extends MultiReferee {
 		p.put("sampleNotInTray", "Invalid CONNECT: you are not carrying sample %d");
 		p.put("unknownMoleculeType", "Invalid CONNECT: invalid molecule %s");
 		p.put("cannotAffordSample", "Invalid CONNECT: you do not have enough molecules/expertise to launch research on sample %d");
+		p.put("sampleNotDiagnosed", "Invalid CONNECT: sample %d has not been diagnosed yet");
 		p.put("connectToNothing", "Invalid CONNECT: you must go to a module before using the connect command");
 		p.put("InvalidConnect", "Invalid CONNECT");
 		p.put("ProjectTooltip", "$%d completes a science project!");
